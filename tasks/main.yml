@@ -39,7 +39,7 @@
   copy: src=xbps-mini-repo.crontab dest=/etc/cron.d/mini-repo owner=root group=root mode=0644
 
 - name: Copy nginx configuration
-  copy: src=mini-repo.conf dest=/etc/nginx/sites-available/mini-repo.conf owner=root group=root mode=0644
+  template: src=mini-repo.conf dest=/etc/nginx/sites-available/mini-repo.conf owner=root group=root mode=0644
   notify:
     - nginx
 
