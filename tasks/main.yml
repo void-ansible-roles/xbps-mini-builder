@@ -29,7 +29,6 @@
   git:
     repo: https://github.com/the-maldridge/xbps-mini-builder.git
     dest: /opt/xbps-mini-repo
-    depth: 1
     force: yes
 
 - name: Alter script ownership
@@ -45,7 +44,7 @@
     dest: /opt/xbps-mini-repo/packages.list
     owner: root
     group: root
-    mode: 644
+    mode: 0644
 
 - name: Copy xbps-src config
   copy:
@@ -53,7 +52,7 @@
     dest: /opt/xbps-mini-repo/xbps-src.conf
     owner: root
     group: root
-    mode: 644
+    mode: 0644
 
 - name: Copy signing keys
   copy:
