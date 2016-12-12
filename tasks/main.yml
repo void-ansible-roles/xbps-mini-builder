@@ -30,6 +30,7 @@
     repo: https://github.com/the-maldridge/xbps-mini-builder.git
     dest: /opt/xbps-mini-repo
     depth: 1
+    force: yes
 
 - name: Alter script ownership
   file:
