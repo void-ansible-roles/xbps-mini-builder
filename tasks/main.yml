@@ -5,6 +5,7 @@
       - git-all
       - xtools
       - make
+      - snooze
     state: present
 
 - name: Create xbuilder group
@@ -72,13 +73,26 @@
   notify:
     - iptables
 
-- name: Copy crontab entry
-  copy:
-    src: xbps-mini-repo.crontab
-    dest: /etc/cron.d/mini-repo
+- name: Create Service Directory
+  file:
+    path: /etc/sv/mini-repo
+    state: directory
     owner: root
     group: root
-    mode: 0644
+    mode: 0755
+
+- name: Install Service Scripts
+  copy:
+    src: run
+    dest: /etc/sv/mini-repo/run
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Enable Builder Service
+  runit:
+    name: mini-repo
+    enabled: yes
 
 - name: Copy nginx configuration
   template:
