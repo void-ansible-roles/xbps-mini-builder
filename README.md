@@ -13,8 +13,6 @@ Meta
 Files Managed:
   * /etc/iptables.d/mini-repo.rules
   * /etc/cron.d/mini-repo
-  * /etc/nginx/sites-available/mini-repo.conf
-  * /etc/nginx/sites-enabled/mini-repo.conf
   * /opt/xbps-mini-repo/
   * /opt/xbps-mini-repo/xbps-mini-builder/
   * /opt/xbps-mini-repo/packages.list
@@ -27,7 +25,7 @@ Defaults Provided:
 Variables Required:
   * xbps_mini_builder_pkgs: file containing the list of packages to be built
   * xbps_mini_builder_conf: file containing configuration for xbps-src
-  * xbps_mini_builder_servername: the nginx servername for the repo to serve as
+  * xbps_mini_builder_servernames: the nginx server_name list for the repo to serve as
 
 Optional Variables:
   * None

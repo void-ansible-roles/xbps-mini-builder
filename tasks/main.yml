@@ -94,20 +94,14 @@
     name: mini-repo
     enabled: yes
 
-- name: Copy nginx configuration
-  template:
-    src: mini-repo.conf
-    dest: /etc/nginx/sites-available/mini-repo.conf
-    owner: root
-    group: root
-    mode: 0644
-  notify:
-    - nginx
+- name: Configure nginx
+  include_role:
+    name: nginx
+    tasks_from: base-site
+  vars:
+    - site:
+        name: mini-repo
+        urls: "{{ xbps_mini_builder_servernames }}"
+        root_path: /opt/xbps-mini-repo/void-packages/hostdir/binpkgs
+        autoindex: true
 
-- name: Enable nginx configuration
-  file:
-    src: ../sites-available/mini-repo.conf
-    dest: /etc/nginx/sites-enabled/mini-repo.conf
-    state: link
-  notify:
-    - nginx
