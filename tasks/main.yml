@@ -94,9 +94,9 @@
     name: mini-repo
     enabled: yes
 
-- name: Configure nginx
+- name: Configure webserver
   include_role:
-    name: nginx
+    name: "{{ VAR_webserver | default('nginx')}}"
     tasks_from: base-site
   vars:
     - site:
